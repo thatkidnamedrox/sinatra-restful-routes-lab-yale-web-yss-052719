@@ -19,7 +19,10 @@ class ApplicationController < Sinatra::Base
     erb :show
   end
 
-  post '/recipes'
+  post '/recipes' do
+    @recipe = Recipe.create(params)
+    erb :show
+  end
 
   patch '/recipes/:id/edit' do
     @recipe = Recipe.find(params[:id])
